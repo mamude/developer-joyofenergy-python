@@ -4,6 +4,7 @@ from pydantic import BaseModel
 
 
 class Readings(BaseModel):
+    day: str
     time: int
     reading: float
 

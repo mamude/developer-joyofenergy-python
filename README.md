@@ -347,3 +347,5 @@ Example output
   }
 ]
 ```
+
+https://www.thoughtworks.com/pt-br/radar

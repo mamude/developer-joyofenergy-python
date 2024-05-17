@@ -1,4 +1,5 @@
 from .controller.electricity_reading_controller import service as electricity_reading_service
+from .controller.electricity_consumer_controller import service as electricity_consumer_service
 from .domain.price_plan import PricePlan
 from .generator.electricity_reading_generator import generate_electricity_readings
 from .repository.price_plan_repository import price_plan_repository
@@ -19,6 +20,12 @@ def populate_random_electricity_readings():
     for index in range(NUM_METERS):
         smartMeterId = f"smart-meter-{index}"
         electricity_reading_service.store_reading(
+            {
+                "smartMeterId": smartMeterId,
+                "electricityReadings": generate_electricity_readings(NUM_READINGS_AGAINST_METER),
+            }
+        )
+        electricity_consumer_service.store_reading(
             {
                 "smartMeterId": smartMeterId,
                 "electricityReadings": generate_electricity_readings(NUM_READINGS_AGAINST_METER),
